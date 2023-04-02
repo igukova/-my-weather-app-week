@@ -13,7 +13,9 @@ export default function Weather(props){
       ready:true,
       temperature:response.data.main.temp,
       humidity:response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
       wind:response.data.wind.speed,
       city:response.data.name
     });
@@ -35,7 +37,7 @@ export default function Weather(props){
           </form>
          <h1>{weatherData.city}</h1>
          <ul>
-          <li>Wendnesday 07:00</li>
+          <li>{weatherData.date.getDay}</li>
           <li className="text-kapitalize"> {weatherData.discription}</li>
          </ul>
          <div className="row">
@@ -50,7 +52,7 @@ export default function Weather(props){
             </div>
             <div className="col-6">
               <ul>
-                  <li>Prasipitation:15%</li>
+                  
                   <li>Humidity:{weatherData.humidity}</li>
                   <li>{weatherData.wind}</li>
               </ul>
